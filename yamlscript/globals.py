@@ -48,6 +48,29 @@ GLOBALS = {
                 ],
                 func=lambda args: args["a"] + args["b"],
             ),
+            BuiltinFunction(
+                name="sub",
+                description="Subtracts two numbers",
+                parameters=[
+                    FunctionParameter(
+                        name="a",
+                        type="int",
+                        description="First number",
+                    ),
+                    FunctionParameter(
+                        name="b",
+                        type="int",
+                        description="Second number",
+                    ),
+                ],
+                returns=[
+                    ReturnValue(
+                        type="int",
+                        description="Difference of the two numbers",
+                    )
+                ],
+                func=lambda args: args["a"] - args["b"],
+            ),
         ],
     )
 }
