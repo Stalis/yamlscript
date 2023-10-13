@@ -21,9 +21,26 @@ $defs:
         default: {}
         title: Parameters
         type: object
+      returns:
+        anyOf:
+        - items:
+            $ref: '#/$defs/ReturnDefinition'
+          type: array
+        - type: 'null'
+        default: []
+        title: Returns
     required:
     - commands
     title: FunctionDefinition
+    type: object
+  ImportDefinition:
+    properties:
+      version:
+        title: Version
+        type: string
+    required:
+    - version
+    title: ImportDefinition
     type: object
   ParameterDefinition:
     properties:
@@ -39,6 +56,21 @@ $defs:
     required:
     - type
     title: ParameterDefinition
+    type: object
+  ReturnDefinition:
+    properties:
+      description:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: Description
+      type:
+        title: Type
+        type: string
+    required:
+    - type
+    title: ReturnDefinition
     type: object
 properties:
   author:
@@ -58,6 +90,12 @@ properties:
       $ref: '#/$defs/FunctionDefinition'
     default: {}
     title: Functions
+    type: object
+  imports:
+    additionalProperties:
+      $ref: '#/$defs/ImportDefinition'
+    default: {}
+    title: Imports
     type: object
   package:
     title: Package
