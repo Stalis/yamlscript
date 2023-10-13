@@ -23,11 +23,11 @@ jobs:
       run: |
         poetry build
     - name: Create release
-      uses: Roang-zero1/github-create-release-action@v2
+      uses: Roang-zero1/github-create-release-action@v3
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload release artifacts
-      uses: Roang-zero1/github-upload-release-artifacts-action@v2
+      uses: Roang-zero1/github-upload-release-artifacts-action@v3
       with:
         args: "dist/"
       env:
