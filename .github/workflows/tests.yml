@@ -6,6 +6,10 @@ name: Python tests
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - poetry.lock
+      - pyproject.toml
+      - '**.py'
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
