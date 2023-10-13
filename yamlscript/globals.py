@@ -1,6 +1,7 @@
 from .models import BuiltinFunction
 from .models import FunctionParameter
 from .models import Package
+from .models import ReturnValue
 
 
 GLOBALS = {
@@ -23,7 +24,29 @@ GLOBALS = {
                 ],
                 returns=[],
                 func=lambda args: print(args["message"]),
-            )
+            ),
+            BuiltinFunction(
+                name="add",
+                description="Adds two numbers",
+                parameters=[
+                    FunctionParameter(
+                        name="a",
+                        type="int",
+                        description="First number",
+                    ),
+                    FunctionParameter(
+                        name="b",
+                        type="int",
+                        description="Second number",
+                    ),
+                ],
+                returns=[
+                    ReturnValue(
+                        type="int",
+                        description="Sum of the two numbers",
+                    )
+                ],
+            ),
         ],
     )
 }
