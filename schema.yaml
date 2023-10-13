@@ -1,0 +1,72 @@
+$defs:
+  FunctionDefinition:
+    properties:
+      commands:
+        items:
+          additionalProperties:
+            type: object
+          maxProperties: 1
+          type: object
+        title: Commands
+        type: array
+      description:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: Description
+      parameters:
+        additionalProperties:
+          $ref: '#/$defs/ParameterDefinition'
+        default: {}
+        title: Parameters
+        type: object
+    required:
+    - commands
+    title: FunctionDefinition
+    type: object
+  ParameterDefinition:
+    properties:
+      description:
+        anyOf:
+        - type: string
+        - type: 'null'
+        default: null
+        title: Description
+      type:
+        title: Type
+        type: string
+    required:
+    - type
+    title: ParameterDefinition
+    type: object
+properties:
+  author:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: Author
+  description:
+    anyOf:
+    - type: string
+    - type: 'null'
+    default: null
+    title: Description
+  functions:
+    additionalProperties:
+      $ref: '#/$defs/FunctionDefinition'
+    default: {}
+    title: Functions
+    type: object
+  package:
+    title: Package
+    type: string
+  version:
+    title: Version
+    type: string
+required:
+- package
+- version
+title: SourceFile
+type: object
