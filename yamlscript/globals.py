@@ -46,6 +46,7 @@ GLOBALS = {
                         description="Sum of the two numbers",
                     )
                 ],
+                func=lambda args: args["a"] + args["b"],
             ),
         ],
     )

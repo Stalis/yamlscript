@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yamlscript"
-version = "0.1.0"
+version = "0.0.1.dev3+633a4d5"
 description = ""
 authors = ["Stanislaw Babkin <stalissss@outlook.com>"]
 readme = "README.md"
@@ -21,8 +21,16 @@ black = "^23.9.1"
 zimports = "^0.6.1"
 pre-commit = "^3.4.0"
 
+[tool.poetry.group.test]
+optional = true
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
+
 [tool.poetry-dynamic-versioning]
 enable = true
+bump = true
+vcs = "git"
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]

@@ -69,19 +69,17 @@ def read_source(path: Path) -> SourceFile:
         return SourceFile(**yaml.full_load(f))
 
 
-def main():
-    file = read_source(Path(sys.argv[1]))
-
+def compile(source: SourceFile) -> Package:
     pkg = Package(
-        name=file.package,
-        version=file.version,
-        description=file.description,
-        author=file.author,
+        name=source.package,
+        version=source.version,
+        description=source.description,
+        author=source.author,
     )
-    for key, params in file.imports.items():
+    for key, params in source.imports.items():
         pkg.imports[key] = find_package(pkg, key)
 
-    for name, item in file.functions.items():
+    for name, item in source.functions.items():
         function = UserFunction(name=name, description=item.description)
         for param_name, param in item.parameters.items():
             function.parameters.append(
@@ -110,6 +108,14 @@ def main():
             )
 
         pkg.functions.append(function)
+
+    return pkg
+
+
+def main():
+    source = read_source(Path(sys.argv[1]))
+
+    pkg = compile(source)
 
     run_func(pkg, "main", {})
 

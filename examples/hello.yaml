@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=../schema.yaml
+package: hello
+version: 1.0.0
+
+imports:
+  std:
+    version: 0.0.1
+
+functions:
+  main:
+    commands:
+      - std::echo:
+          message: Hello world!
