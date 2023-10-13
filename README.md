@@ -2,8 +2,9 @@
 
 Programming language, using plain YAML syntax
 
-
 ## Examples
+
+You can use `schema.yaml` in repository for syntax checking
 
 ### Hello, World
 
