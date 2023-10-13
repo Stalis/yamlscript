@@ -21,7 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install poetry
-        poetry install --all-extras
+        poetry self add "poetry-dynamic-versioning[plugin]"
+        poetry install --with dev --with test
     - name: Build package
       run: |
         poetry build
